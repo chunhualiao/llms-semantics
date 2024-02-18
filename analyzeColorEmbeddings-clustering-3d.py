@@ -42,17 +42,17 @@ def cluster_and_visualize_colors(color_embeddings, n_clusters=5):
     ax.set_ylabel('PCA Component 2')
     ax.set_zlabel('PCA Component 3')
     
-    plt.savefig('clustering-color-embeddings-3d.pdf', dpi=300, bbox_inches='tight')
+    plt.savefig('clustering-color-embeddings-3d-all.pdf', dpi=300, bbox_inches='tight')
     plt.show()
 
 color_words = ['blue', 'orange', 'red', 'grey', 'white', 'black', 'yellow', 'purple', 'green']
 
 # Path to your JSON file
-file_path = 'color_embeddings.json'
+file_path = 'color_embeddings_all.json'
 
 # Read the JSON file and convert it back into a Python dictionary
 with open(file_path, 'r') as json_file:
     color_embeddings = json.load(json_file)
 
-cluster_and_visualize_colors(color_embeddings, n_clusters=3)
+cluster_and_visualize_colors(color_embeddings)
 
