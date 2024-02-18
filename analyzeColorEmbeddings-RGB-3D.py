@@ -54,7 +54,7 @@ def compare_embeddings_with_rgb_and_visualize(color_embeddings):
     ax2.set_xlabel('R')
     ax2.set_ylabel('G')
     ax2.set_zlabel('B')
-      plt.savefig('3D-color-embeddings-RGB.pdf', dpi=300, bbox_inches='tight')
+    plt.savefig('3D-color-embeddings-RGB.pdf', dpi=300, bbox_inches='tight')
     plt.show()
 
 # main entry
