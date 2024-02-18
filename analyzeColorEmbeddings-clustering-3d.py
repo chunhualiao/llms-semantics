@@ -31,19 +31,17 @@ def cluster_and_visualize_colors(color_embeddings, n_clusters=5):
     # Visualize the clusters in 3D space
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
+
+    # Plot each point and add a text label
+    for i, (x, y, z) in enumerate(reduced_embeddings):
+        ax.scatter(x, y, z, color=plt.cm.viridis(labels[i] / n_clusters))
+        ax.text(x, y, z, '%s' % (color_names[i]), size=10, zorder=1, color='k')
     
-    # Choose a different color for each cluster
-    scatter = ax.scatter(reduced_embeddings[:, 0], reduced_embeddings[:, 1], reduced_embeddings[:, 2], c=labels, cmap='viridis', label=color_names)
-    
-    # Legend with color names
-    legend1 = ax.legend(*scatter.legend_elements(), title="Clusters")
-    ax.add_artist(legend1)
-    
-    ax.set_title('Clustering of Color Embeddings in 3D Space')
+    ax.set_title('Clustering of Color Embeddings in 3D Space with Labels')
     ax.set_xlabel('PCA Component 1')
     ax.set_ylabel('PCA Component 2')
     ax.set_zlabel('PCA Component 3')
-
+    
     plt.savefig('clustering-color-embeddings-3d.pdf', dpi=300, bbox_inches='tight')
     plt.show()
 
